@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     var gameSound: SystemSoundID = 0
     
     let trivia: [[String : String]] = [
-        ["Question": "Only female koalas can whistle", "Answer": "False"],
+        ["Question": "This was the only US President to serve more than two consecutive terms.", "Answer": "False"],
         ["Question": "Blue whales are technically whales", "Answer": "True"],
         ["Question": "Camels are cannibalistic", "Answer": "False"],
         ["Question": "All ducks are birds", "Answer": "True"]
