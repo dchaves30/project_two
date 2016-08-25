@@ -10,7 +10,7 @@ import GameKit
 
 struct QuestionModel
 {
-    let Allquestions: [[String:String]] = [
+    let allQuestions: [[String:String]] = [
         ["question":"This was the only US President to serve more than two consecutive terms.", "answer":"Franklin D. Roosevelt"],
         ["question":"Which of the following countries has the most residents?","answer":"Nigeria"],
         ["question":"In what year was the United Nations founded?","answer":"1945"],
@@ -24,19 +24,45 @@ struct QuestionModel
     ]
     
     
-    let answerOptions01: [String] = ["George Washington","Franklin D. Roosevelt","Woodrow Wilson","Andrew Jackson"]
-    let answerOptions02: [String] = ["Nigeria","Russia","Iran","Vietnam"]
-    let answerOptions03: [String] = ["1918","1919","1945","1954"]
-    let answerOptions04: [String] = ["Paris","Washington D.C.","New York City","Boston"]
-    let answerOptions05: [String] = ["Iran","Iraq","Brazil","Canada"]
-    let answerOptions06: [String] = ["Italy","Brazil","Argetina","Spain"]
-    let answerOptions07: [String] = ["Yangtze","Mississippi","Congo","Mekong"]
-    let answerOptions08: [String] = ["Mexico City","Cape Town","San Juan","Sydney"]
-    let answerOptions09: [String] = ["Poland","United States","Sweden","Senegal"]
-    let answerOptions10: [String] = ["France","Germany","Japan","Great Britian"]
+    let allAnswers: [[String]] = [
+        ["George Washington","Franklin D. Roosevelt","Woodrow Wilson","Andrew Jackson"],
+        ["Nigeria","Russia","Iran","Vietnam"],
+        ["1918","1919","1945","1954"],
+        ["Paris","Washington D.C.","New York City","Boston"],
+        ["Iran","Iraq","Brazil","Canada"],
+        ["Italy","Brazil","Argetina","Spain"],
+        ["Yangtze","Mississippi","Congo","Mekong"],
+        ["Mexico City","Cape Town","San Juan","Sydney"],
+        ["Poland","United States","Sweden","Senegal"],
+        ["France","Germany","Japan","Great Britian"]
+    ]
+    
+    var indexOfSelectedQuestion: Int = 0
     
     
+    mutating func displayQuestion() -> String {
+        
+        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextIntWithUpperBound(allQuestions.count)
+        let questionDictionary = allQuestions[indexOfSelectedQuestion]
+        
+        return questionDictionary["question"]!
+        
+    }
     
+    func displayAllAnswers() ->[String]
+    {
+        let indexOfSelectedAnswer = allAnswers[indexOfSelectedQuestion]
+        
+        return indexOfSelectedAnswer
+        
+        }
+    
+    func correctAnswer() ->String {
+        
+        let correctAnswer = allQuestions[indexOfSelectedQuestion]
+        
+        return correctAnswer["answer"]!
+    }
     
     
 }
