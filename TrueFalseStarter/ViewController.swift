@@ -26,10 +26,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var answer01: UIButton!
     @IBOutlet weak var answer02: UIButton!
     
-    //Create questionModel instance
-    let question = QuestionModel()
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +40,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-  /*  func displayQuestion() {
+/*  func displayQuestion() {
         indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextIntWithUpperBound(trivia.count)
         let questionDictionary = trivia[indexOfSelectedQuestion]
         questionField.text = questionDictionary["Question"]
@@ -86,9 +82,10 @@ class ViewController: UIViewController {
             displayScore()
         } else {
             // Continue game
-            displayQuestion()
+            //displayQuestion()
         }
     }
+
     
     @IBAction func playAgain() {
         // Show the answer buttons

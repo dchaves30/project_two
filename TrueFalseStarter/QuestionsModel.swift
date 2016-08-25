@@ -7,9 +7,13 @@
 //
 
 import GameKit
+import UIKit
 
 struct QuestionModel
 {
+    
+    var indexOfSelectedQuestion: Int = 0
+    
     let allQuestions: [[String:String]] = [
         ["question":"This was the only US President to serve more than two consecutive terms.", "answer":"Franklin D. Roosevelt"],
         ["question":"Which of the following countries has the most residents?","answer":"Nigeria"],
@@ -22,7 +26,6 @@ struct QuestionModel
         ["question":"Which country was the first to allow women to vote in national elections?","answer":"Poland"],
         ["question":"Which of these countries won the most medals in the 2012 Summer Games?","answer":"Great Britain"]
     ]
-    
     
     let allAnswers: [[String]] = [
         ["George Washington","Franklin D. Roosevelt","Woodrow Wilson","Andrew Jackson"],
@@ -37,10 +40,10 @@ struct QuestionModel
         ["France","Germany","Japan","Great Britian"]
     ]
     
-    var indexOfSelectedQuestion: Int = 0
     
     
-    mutating func displayQuestion() -> String {
+    
+    func displayQuestion() -> String {
         
         indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextIntWithUpperBound(allQuestions.count)
         let questionDictionary = allQuestions[indexOfSelectedQuestion]
@@ -66,16 +69,3 @@ struct QuestionModel
     
     
 }
-
-/*
- 
- let question02: [String:String] = ["question":"Which of the following countries has the most residents?","answer":"Nigeria"]
- let question03: [String:String] = ["question":"In what year was the United Nations founded?","answer":"1945"]
- let question04: [String:String] = ["question:":"The Titanic departed from the United Kingdom, where was it supposed to arrive?","answer":"New YorkCity"]
- let question05: [String:String] = ["question":"Which nation produces the most oil?","answer":"Canada"]
- let question06: [String:String] = ["question":"Which country has most recently won consecutive World Cups in Soccer?","answers":"Brazil"]
- let question07: [String:String] = ["question":"Which of the following rivers is longest?","answer":"Mississippi"]
- let question08: [String:String] = ["question":"Which city is the oldest?","answer":"Mexico City"]
- let question09: [String:String] = ["question":"Which country was the first to allow women to vote in national elections?","answer":"Poland"]
- let question10: [String:String] = ["question":"Which of these countries won the most medals in the 2012 Summer Games?","answer":"Great Britain"]
- */
