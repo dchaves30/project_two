@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     var questionsAsked = 0
     var correctQuestions = 0
     var questionAndAnswer = QuestionModel()
-   
+    var correctAnswer: String = ""
     
     var gameSound: SystemSoundID = 0
     
@@ -27,7 +27,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var answer03: UIButton!
     @IBOutlet weak var answer04: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,107 +34,38 @@ class ViewController: UIViewController {
         // Start game
         playGameStartSound()
         loadQuestionAndButtons()
-        playAgainButton.hidden = true
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func loadQuestionAndButtons() {
-        
-       let loadString = questionAndAnswer.getRandomQuestion()
-        questionField.text = loadString["question"]
-        
-        answer01.setTitle(loadString["option01"], forState: UIControlState.Normal)
-        answer02.setTitle(loadString["option02"], forState: UIControlState.Normal)
-        answer03.setTitle(loadString["option03"], forState: UIControlState.Normal)
-        answer04.setTitle(loadString["option04"], forState: UIControlState.Normal)
-    }
-    
-    
-    func displayScore() {
-        // Hide the answer buttons
-        answer01.hidden = true
-        answer02.hidden = true
-        answer03.hidden = true
-        answer04.hidden = true
-        
-        // Display play again button
-        playAgainButton.hidden = false
-        
-        questionField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
-        
-    }
+ 
     
     @IBAction func checkAnswer(sender: UIButton) {
         // Increment the questions asked counter
         questionsAsked += 1
         
-        //let selectedQuestionDict = trivia[indexOfSelectedQuestion]
-        //let correctAnswer = questionAndAnswer.getRandomQuestion()["answer"]
-        
-        if (sender === answer01) || (sender === answer02) || (sender === answer03)  || (sender === answer04)  {
+        if (sender.currentTitle == correctAnswer){
             correctQuestions += 1
             questionField.text = "Correct!"
         } else {
-            questionField.text = "Sorry, wrong answer!"
+            questionField.text = "Incorrect! The Answer is \(correctAnswer)"
         }
         
         loadNextRoundWithDelay(seconds: 2)
+        
     }
-    
-    
-    func nextRound() {
-        if questionsAsked == questionsPerRound {
-            // Game is over
-            displayScore()
-        } else {
-            // Continue game
-            questionField.text = questionAndAnswer.getRandomQuestion()["question"]
-            loadQuestionAndButtons()
-            playAgainButton.hidden = true
-        }
-    }
-
     
     @IBAction func playAgain() {
         // Show the answer buttons
-        answer01.hidden = false
-        answer02.hidden = false
-        answer03.hidden = false
-        answer04.hidden = false
+        showAllQuestionButton()
         
         questionsAsked = 0
         correctQuestions = 0
         nextRound()
     }
-    
 
-    
-    // MARK: Helper Methods
-    
-    func loadNextRoundWithDelay(seconds seconds: Int) {
-        // Converts a delay in seconds to nanoseconds as signed 64 bit integer
-        let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
-        // Calculates a time value to execute the method given current time and delay
-        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, delay)
-        
-        // Executes the nextRound method at the dispatch time on the main queue
-        dispatch_after(dispatchTime, dispatch_get_main_queue()) {
-            self.nextRound()
-        }
-    }
-    
-    func loadGameStartSound() {
-        let pathToSoundFile = NSBundle.mainBundle().pathForResource("GameSound", ofType: "wav")
-        let soundURL = NSURL(fileURLWithPath: pathToSoundFile!)
-        AudioServicesCreateSystemSoundID(soundURL, &gameSound)
-    }
-    
-    func playGameStartSound() {
-        AudioServicesPlaySystemSound(gameSound)
-    }
 }
 
