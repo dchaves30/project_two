@@ -8,10 +8,9 @@
 
 import GameKit
 
-struct QuestionModel
+struct QuestionModel 
+
 {
-    var oldQuestion: Int = 0
-    var indexOfSelectedQuestion: Int = 0
     
     let allQuestions: [[String:String]] = [
         ["question":"This was the only US President to serve more than two consecutive terms.", "answer":"Franklin D. Roosevelt", "option01":"George Washington","option02":"Franklin D. Roosevelt","option03":"Woodrow Wilson", "option04":"Andrew Jackson"],
@@ -27,26 +26,27 @@ struct QuestionModel
     ]
     
     
-    mutating func getRandomQuestion() -> [String:String] {
+     func getRandomQuestion() -> [String:String] {
         
-        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextIntWithUpperBound(allQuestions.count)
-        
-        if indexOfSelectedQuestion == oldQuestion{
-            
+        var usedQuestions: [Int] = []
+        var indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextIntWithUpperBound(allQuestions.count)
+        if usedQuestions.contains(indexOfSelectedQuestion)
+        {
             indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextIntWithUpperBound(allQuestions.count)
+            usedQuestions.append(indexOfSelectedQuestion)
+            if usedQuestions.count >= 4
+            {
+                usedQuestions = []
+            }
             return allQuestions[indexOfSelectedQuestion]
         }
         else {
             
-            oldQuestion = indexOfSelectedQuestion
-            indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextIntWithUpperBound(allQuestions.count)
+            usedQuestions.append(indexOfSelectedQuestion)
             return allQuestions[indexOfSelectedQuestion]
+            
         }
         
-        
-        
+
     }
-
-
-    
 }

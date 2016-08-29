@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
     let questionsPerRound = 4
     var questionsAsked = 0
+    var repeatedQuestion: [String] = []
     var correctQuestions = 0
     var questionAndAnswer = QuestionModel()
     var correctAnswer: String = ""
