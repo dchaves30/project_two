@@ -28,25 +28,10 @@ struct QuestionModel
     
      func getRandomQuestion() -> [String:String] {
         
-        var usedQuestions: [Int] = []
-        var indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextIntWithUpperBound(allQuestions.count)
-        if usedQuestions.contains(indexOfSelectedQuestion)
-        {
-            indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextIntWithUpperBound(allQuestions.count)
-            usedQuestions.append(indexOfSelectedQuestion)
-            if usedQuestions.count >= 4
-            {
-                usedQuestions = []
-            }
+       
+        let indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextIntWithUpperBound(allQuestions.count)
+      
             return allQuestions[indexOfSelectedQuestion]
-        }
-        else {
-            
-            usedQuestions.append(indexOfSelectedQuestion)
-            return allQuestions[indexOfSelectedQuestion]
-            
-        }
-        
-
+    
     }
 }

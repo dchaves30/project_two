@@ -17,7 +17,7 @@
 		FE038F481D72962200CD04A3 /* PlayNextRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE038F471D72962200CD04A3 /* PlayNextRound.swift */; };
 		FE038F4A1D72966A00CD04A3 /* HelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE038F491D72966A00CD04A3 /* HelperMethods.swift */; };
 		FE038F4C1D7298DA00CD04A3 /* LoadQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE038F4B1D7298DA00CD04A3 /* LoadQuestions.swift */; };
-		FE2AF9F31D73C0AE000135FE /* checkRepetition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2AF9F21D73C0AE000135FE /* checkRepetition.swift */; };
+		FE2AF9F91D73E143000135FE /* ShowCorrectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2AF9F81D73E143000135FE /* ShowCorrectButton.swift */; };
 		FEA5EB1E1D6D228600F2C9FC /* DisplayQuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA5EB1D1D6D228600F2C9FC /* DisplayQuestionModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +34,7 @@
 		FE038F471D72962200CD04A3 /* PlayNextRound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayNextRound.swift; sourceTree = "<group>"; };
 		FE038F491D72966A00CD04A3 /* HelperMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperMethods.swift; sourceTree = "<group>"; };
 		FE038F4B1D7298DA00CD04A3 /* LoadQuestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadQuestions.swift; sourceTree = "<group>"; };
-		FE2AF9F21D73C0AE000135FE /* checkRepetition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkRepetition.swift; sourceTree = "<group>"; };
+		FE2AF9F81D73E143000135FE /* ShowCorrectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCorrectButton.swift; sourceTree = "<group>"; };
 		FEA5EB1D1D6D228600F2C9FC /* DisplayQuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayQuestionModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,7 +80,7 @@
 				FE038F471D72962200CD04A3 /* PlayNextRound.swift */,
 				FE038F491D72966A00CD04A3 /* HelperMethods.swift */,
 				FE038F4B1D7298DA00CD04A3 /* LoadQuestions.swift */,
-				FE2AF9F21D73C0AE000135FE /* checkRepetition.swift */,
+				FE2AF9F81D73E143000135FE /* ShowCorrectButton.swift */,
 			);
 			path = TrueFalseStarter;
 			sourceTree = "<group>";
@@ -117,6 +117,7 @@
 				TargetAttributes = {
 					97093D371C913506001275BC = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = M9ZL7MWCMH;
 					};
 				};
 			};
@@ -158,7 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEA5EB1E1D6D228600F2C9FC /* DisplayQuestionModel.swift in Sources */,
-				FE2AF9F31D73C0AE000135FE /* checkRepetition.swift in Sources */,
+				FE2AF9F91D73E143000135FE /* ShowCorrectButton.swift in Sources */,
 				97093D3E1C913506001275BC /* ViewController.swift in Sources */,
 				FE038F4A1D72966A00CD04A3 /* HelperMethods.swift in Sources */,
 				FE038F4C1D7298DA00CD04A3 /* LoadQuestions.swift in Sources */,
@@ -277,10 +278,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TrueFalseStarter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.teamtreehouse.TrueFalseStarter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.danilochaves.TrueFalseStarter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -288,10 +292,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TrueFalseStarter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.teamtreehouse.TrueFalseStarter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.danilochaves.TrueFalseStarter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

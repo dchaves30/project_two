@@ -14,47 +14,67 @@ extension ViewController {
         
         var loadString = questionAndAnswer.getRandomQuestion()
         
-         correctAnswer = loadString["answer"]!
+         correctAnswer = loadString["answer"]! //assign the correct answwer to the variable declared in the view controller
         
-        if repeatedQuestion.contains(correctQuestions)
+       //check if the question buttons are disabled or hidden. if yes, enable and show them
+        for n in allQuestionButtons
         {
+            if n.enabled == false || n.hidden == true {
+                n.enabled = true
+                n.hidden = false
+            }
+        }
+        
+        
+       //check if the string "answer" exists. if yes, generates new question and assign new answer to array. if not, assign answer to array and assign values to buttons and labels
+        if repeatedQuestion.contains(correctAnswer)
+        {
+            //print(repeatedQuestion)
             loadString = questionAndAnswer.getRandomQuestion()
-            repeatedQuestion.append[correctAnswer]
+            correctAnswer = loadString["answer"]!
+            repeatedQuestion.append(correctAnswer)
+            
             if repeatedQuestion.count >= questionsAsked
             {
                 repeatedQuestion = []
+                 //print(repeatedQuestion)
             }
             
             questionField.text = loadString["question"]
             
             playAgainButton.hidden = true
             
-            answer01.setTitle(loadString["option01"], forState: UIControlState.Normal)
-            answer01.layer.cornerRadius = 5
-            answer02.setTitle(loadString["option02"], forState: UIControlState.Normal)
-            answer02.layer.cornerRadius = 5
-            answer03.setTitle(loadString["option03"], forState: UIControlState.Normal)
-            answer03.layer.cornerRadius = 5
-            answer04.setTitle(loadString["option04"], forState: UIControlState.Normal)
-            answer04.layer.cornerRadius = 5
-            
+            // assing labels and cornerRadius to all buttons
+            for n in allQuestionButtons
+            {
+                counter += 1
+                n.layer.cornerRadius = 5
+                //print("option0"+"\(counter)")
+                n.setTitle(loadString["option0"+"\(counter)"], forState: UIControlState.Normal)
+            }
+
+            counter = 0
         }
         else {
             
-            repeatedQuestion.append[correctAnswer]
+            repeatedQuestion.append(correctAnswer)
             
             questionField.text = loadString["question"]
             
             playAgainButton.hidden = true
             
-            answer01.setTitle(loadString["option01"], forState: UIControlState.Normal)
-            answer01.layer.cornerRadius = 5
-            answer02.setTitle(loadString["option02"], forState: UIControlState.Normal)
-            answer02.layer.cornerRadius = 5
-            answer03.setTitle(loadString["option03"], forState: UIControlState.Normal)
-            answer03.layer.cornerRadius = 5
-            answer04.setTitle(loadString["option04"], forState: UIControlState.Normal)
-            answer04.layer.cornerRadius = 5
+            for n in allQuestionButtons
+            {
+                counter += 1
+                n.layer.cornerRadius = 5
+                //print("option0"+"\(counter)")
+                n.setTitle(loadString["option0"+"\(counter)"], forState: UIControlState.Normal)
+                
+            }
+            
+            counter = 0
+
+           
         }
     
        

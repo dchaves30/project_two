@@ -35,7 +35,7 @@ extension ViewController {
         // Display play again button
         playAgainButton.hidden = false
         
-        
+        //Provide feedback to the user based on their score
         if correctQuestions <= 2{
             questionField.text = "Try Again!\nYou got \(correctQuestions) out of \(questionsPerRound) correct."
         }

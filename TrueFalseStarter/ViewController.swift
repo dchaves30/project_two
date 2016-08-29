@@ -14,10 +14,12 @@ class ViewController: UIViewController {
     
     let questionsPerRound = 4
     var questionsAsked = 0
-    var repeatedQuestion: [String] = []
+    var repeatedQuestion: [String] = [] //Array used to check repeated questions in the LoadQuestions method
     var correctQuestions = 0
-    var questionAndAnswer = QuestionModel()
-    var correctAnswer: String = ""
+    var questionAndAnswer = QuestionModel() //struct that returns a random question based on the collection
+    var correctAnswer: String = "" //variable that holds the correctAnswer in the LoadQuestion method
+    var counter = 0
+    var counterCorrectButton = 0
     
     var gameSound: SystemSoundID = 0
     
@@ -28,13 +30,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var answer03: UIButton!
     @IBOutlet weak var answer04: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
+    @IBOutlet var allQuestionButtons: [UIButton]! //collection of all question buttons
 
     override func viewDidLoad() {
         super.viewDidLoad()
         loadGameStartSound()
         // Start game
         playGameStartSound()
-        loadQuestionAndButtons()
+        loadQuestionAndButtons() // load the question to the text field and each option to the respective buttons
         
     }
 
@@ -48,11 +51,20 @@ class ViewController: UIViewController {
         // Increment the questions asked counter
         questionsAsked += 1
         
+        //disable all the buttons to avoid user presssing it multiple times when pressed
+        for n in allQuestionButtons
+        {
+            n.enabled = false
+        }
+        
+        //check if the button title matches the correct answer
         if (sender.currentTitle == correctAnswer){
             correctQuestions += 1
             questionField.text = "Correct!"
+            showCorrectButtonOnly()
         } else {
             questionField.text = "Incorrect! The Answer is \(correctAnswer)"
+            showCorrectButtonOnly()
         }
         
         loadNextRoundWithDelay(seconds: 2)
@@ -61,7 +73,7 @@ class ViewController: UIViewController {
     
     @IBAction func playAgain() {
         // Show the answer buttons
-        showAllQuestionButton()
+        showAllQuestionButton() //show all hidden question buttons
         
         questionsAsked = 0
         correctQuestions = 0

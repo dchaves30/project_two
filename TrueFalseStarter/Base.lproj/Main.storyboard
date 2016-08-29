@@ -120,6 +120,10 @@
                         <outlet property="answer04" destination="AS4-HX-g9f" id="GSw-Sp-Iwc"/>
                         <outlet property="playAgainButton" destination="K17-uy-MvB" id="0Bx-Cm-ye0"/>
                         <outlet property="questionField" destination="I3V-ih-1Ky" id="7UI-o2-ATi"/>
+                        <outletCollection property="allQuestionButtons" destination="wZy-vu-OMr" collectionClass="NSMutableArray" id="1Jx-kb-i0l"/>
+                        <outletCollection property="allQuestionButtons" destination="VwH-cT-maM" collectionClass="NSMutableArray" id="nxm-9u-Oby"/>
+                        <outletCollection property="allQuestionButtons" destination="J1V-MS-ECi" collectionClass="NSMutableArray" id="cVc-H3-LOb"/>
+                        <outletCollection property="allQuestionButtons" destination="AS4-HX-g9f" collectionClass="NSMutableArray" id="COS-SD-fzs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
